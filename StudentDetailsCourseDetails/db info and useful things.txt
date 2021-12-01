@@ -1,0 +1,7 @@
+db table:-
+----------
+create table studentdetails(id number(3),name varchar2(20),course varchar2(10),fees number(10,2),primary key(id));
+
+db sequence:-
+------------
+create sequence stdetails_seq start with 1 increment by 1;

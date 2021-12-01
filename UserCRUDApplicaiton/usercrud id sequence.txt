@@ -1,0 +1,8 @@
+create table:-
+create table usercrud(fname varchar2(20),lname varchar2(20),age number(3),gender varchar2(10),subject varchar2(10),dob date,address varchar2(30),id number(4),primary key(id));
+
+create sequence:-
+create sequence user_seq start with 1 increment by 1;
+
+use sequence:-
+user_seq.NEXTVAL
