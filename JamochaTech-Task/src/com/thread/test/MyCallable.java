@@ -1,17 +1,24 @@
 package com.thread.test;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.concurrent.Callable;
 
 @SuppressWarnings("rawtypes")
 public class MyCallable implements Callable {
+	public File file;
+
+	public MyCallable(File file) {
+		this.file = file;
+	}
+
 	@Override
-	public File[] call() throws Exception {
-		// read file date(bytes)
-		ExcelFileFilter filter=new ExcelFileFilter();
-		File dir=new File("C:\\Users\\saswa\\Documents");
-		File files[]=dir.listFiles(filter);
-//		FileInputStream fis = new FileInputStream(new File("D:\\Downloads\\Documents\\file_example1.xlsx"));
-		return files;
+	public String call() throws Exception {
+		try{
+			PrintXlsxFile.printExcelFile(new FileInputStream(this.file));			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "Completed";
 	}
 }

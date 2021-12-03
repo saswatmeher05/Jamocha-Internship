@@ -12,10 +12,10 @@ public class MyCallableTest {
 		FutureTask[] ft = new FutureTask[3];
 
 		for (int i = 0; i < ft.length; i++) {
-			// creating MyCallable object
-			Callable callable = new MyCallable();
-			// creating new FutureTask with MyCallable object
-			ft[i] = new FutureTask(callable);
+			// create MyCallable object
+//			Callable callable = new MyCallable();
+			// create new FutureTask with MyCallable object
+//			ft[i] = new FutureTask(callable);
 			Thread thread = new Thread(ft[i]);
 			thread.start();
 		}

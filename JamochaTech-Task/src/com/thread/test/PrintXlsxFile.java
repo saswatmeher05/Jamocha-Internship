@@ -10,7 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class PrintXlsxFile {
-	public static void printExcelFile(FileInputStream fis) throws IOException, InterruptedException {
+	public static synchronized void printExcelFile(FileInputStream fis) throws IOException, InterruptedException {
 		// create a WorkBook
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 		// create a Sheet
@@ -27,10 +27,10 @@ public class PrintXlsxFile {
 			while (cellIterator.hasNext()) {
 				Cell cell = cellIterator.next();
 				switch (cell.getCellType()) {
-				case STRING: // field that represents string cell type
+				case STRING: // represents string cell type
 					System.out.printf("%-18s", cell.getStringCellValue());
 					break;
-				case NUMERIC: // field that represents numeric cell type
+				case NUMERIC: // represents numeric cell type
 					System.out.printf("%-18s", cell.getNumericCellValue());
 					break;
 				default:
@@ -39,5 +39,7 @@ public class PrintXlsxFile {
 			System.out.println();
 		}
 		System.out.println("--------------------------------------------------------------");
+
+		wb.close();
 	}
 }
