@@ -5,10 +5,10 @@ public class CourseMybatis {
 	private String cname;
 	private double cfees;
 	
+	
 	public CourseMybatis() {}
 	
 	public CourseMybatis(int cid, String cname, double cfees) {
-		super();
 		this.cid = cid;
 		this.cname = cname;
 		this.cfees = cfees;

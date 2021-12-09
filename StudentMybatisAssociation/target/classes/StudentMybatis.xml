@@ -9,7 +9,21 @@
 		<result property="sname" column="sname" />
 		<result property="sage" column="sage" />
 		<result property="cid" column="cid" />
+		<association property="cb"
+			resultMap="courseMybatis" />
 	</resultMap>
+
+	<resultMap type="CourseMybatis" id="courseMybatis">
+		<result property="cid" column="cid" />
+		<result property="cname" column="cname" />
+		<result property="cfees" column="cfees" />
+	</resultMap>
+
+	<select id="getAllJoin" resultMap="result">
+		select
+		s.sid,s.sname,s.sage,s.cid,c.cname,c.cfees from studentmybatis s inner
+		join coursemybatis c on s.cid=c.cid
+	</select>
 
 	<select id="selectById" parameterType="int" resultMap="result">
 		select * from studentmybatis

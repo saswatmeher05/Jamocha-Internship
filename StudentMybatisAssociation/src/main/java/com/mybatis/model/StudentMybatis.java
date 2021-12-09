@@ -1,10 +1,21 @@
 package com.mybatis.model;
 
+import java.util.List;
+
 public class StudentMybatis {
 	private int sid;
 	private String sname;
 	private int sage;
 	private int cid;
+	private CourseMybatis cb;
+
+	public CourseMybatis getCb() {
+		return cb;
+	}
+
+	public void setCb(CourseMybatis cb) {
+		this.cb = cb;
+	}
 
 	public int getSage() {
 		return sage;

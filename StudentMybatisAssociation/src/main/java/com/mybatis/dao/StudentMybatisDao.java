@@ -76,5 +76,16 @@ public class StudentMybatisDao {
 			session.close();
 		}
 	}
+	
+	public List<StudentMybatis> getAllJoin(){
+		SqlSessionFactory factory=MybatisConnectionFactory.getSqlSessionfactory();
+		SqlSession session=factory.openSession();
+		try {
+			List<StudentMybatis> list=session.selectList("StudentMybatis.getAllJoin");
+			return list;
+		}finally {
+			
+		}
+	}
 
 }

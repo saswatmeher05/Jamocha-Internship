@@ -27,5 +27,4 @@ CREATE TABLE `coursemybatis` (
 -------------------------------------------------------
 join query to show student details and course details:-
 -------------------------------------------------------
-select studentmybatis.sid,studentmybatis.sname,studentmybatis.sage,studentmybatis.cid,coursemybatis.cname,coursemybatis.cfees 
-from studentmybatis inner join coursemybatis on studentmybatis.cid=coursemybatis.cid;
+select s.sid,s.sname,s.sage,s.cid,c.cname,c.cfees from studentmybatis s inner join coursemybatis c on s.cid=c.cid;

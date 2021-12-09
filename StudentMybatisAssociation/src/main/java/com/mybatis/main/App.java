@@ -8,6 +8,7 @@ import java.util.Scanner;
 import com.mybatis.model.StudentMybatis;
 import com.mybatis.service.StudentMyBatisServiceImpl;
 import com.mybatis.service.StudentMybatisService;
+import com.mybatis.util.MyBatisUtil;
 
 public class App {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
@@ -16,7 +17,8 @@ public class App {
 		boolean flag = true;
 		do {
 			System.out.println("Select One Option:\n" + "1.Insert Student:\n" + "2.Get Student By ID:\n"
-					+ "3.Update Student Details:\n" + "4.Delete Student:\n" + "5.Get All Students:\n" + "6.Exit:");
+					+ "3.Update Student Details:\n" + "4.Delete Student:\n" + "5.Get All Students:\n"
+					+ "6.Get All Data:\n" + "7.Exit:");
 			int option = Integer.parseInt(sc.nextLine());
 			switch (option) {
 			case 1:
@@ -38,12 +40,20 @@ public class App {
 				System.out.println(service.deleteById(id2));
 				break;
 			case 5:
+				MyBatisUtil.printTableHeaderStudentOnly();
 				List<StudentMybatis> list = service.getAll();
 				for (StudentMybatis batis : list) {
-					System.out.println(batis);
+					MyBatisUtil.printTableDataStudentOnly(batis);
 				}
 				break;
 			case 6:
+				MyBatisUtil.printTableHeaderAllData();
+				List<StudentMybatis> list1=service.getAllJoin();
+				for (StudentMybatis batis : list1) {
+					MyBatisUtil.printTableDataAll(batis);
+				}
+				break;
+			case 7:
 				flag = false;
 				break;
 			}

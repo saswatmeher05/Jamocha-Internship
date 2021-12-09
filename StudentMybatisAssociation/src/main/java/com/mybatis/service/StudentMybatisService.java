@@ -14,4 +14,6 @@ public interface StudentMybatisService {
 	public String updateById(int id);
 
 	public String deleteById(int id);
+	
+	public List<StudentMybatis> getAllJoin();
 }

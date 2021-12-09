@@ -60,4 +60,9 @@ public class StudentMyBatisServiceImpl implements StudentMybatisService {
 			return "User with id=" + id + " not found";
 		}
 	}
+	@Override
+	public List<StudentMybatis> getAllJoin() {
+		List<StudentMybatis> list=dao.getAllJoin();
+		return list;
+	}
 }
