@@ -5,3 +5,5 @@ create table studentdetails(id number(3),name varchar2(20),course varchar2(10),f
 db sequence:-
 ------------
 create sequence stdetails_seq start with 1 increment by 1;
+
+insert into studentdetails values(stdetails_seq.NEXTVAL,'somu','java',1000);

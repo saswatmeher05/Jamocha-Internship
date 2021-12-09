@@ -2,6 +2,7 @@ package com.pingtest;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class PingUsingCMD {
 
@@ -9,10 +10,10 @@ public class PingUsingCMD {
 
 		try {
 			Process p = Runtime.getRuntime().exec(command);
-			BufferedReader inputStream = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
 			String s = "";
-			while ((s = inputStream.readLine()) != null) {
+			while ((s = reader.readLine()) != null) {
 				System.out.println(s);
 			}
 
@@ -22,8 +23,9 @@ public class PingUsingCMD {
 	}
 
 	public static void main(String[] args) {
-
-		String ip = "10.10.10.10"; 
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter ip or address to ping:");
+		String ip = sc.nextLine();
 		runSystemCommand("ping " + ip);
 	}
 }

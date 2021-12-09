@@ -10,10 +10,10 @@ public class ExcelExecutorTest {
 		File dir=new File("C:\\Users\\saswa\\Documents");
 		File file[]=dir.listFiles(filter);
 		
-		ExcelScheduledExecutorService eses=ExcelScheduledExecutorService.getInstance();
+		ExcelExecutorService eses=ExcelExecutorService.getInstance();
 		
 		for(int i=0;i<file.length;i++) {
-			eses.submitToThreadPool(new MyExcelFileExecutorCallable(file[i]));
+			eses.submitToThreadPool(new MyExcelCallable(file[i]));
 		}
 		
 		eses.getExecutorService().shutdown();
