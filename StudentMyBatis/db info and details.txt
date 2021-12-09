@@ -1,0 +1,9 @@
+table:-
+--------
+create table student(id int(10) not null auto_increment,name varchar(30) not null,age int(3) not null,gender varchar(15) not null,subject varchar(20) not null,dob date not null,email varchar(40),primary key(id));
+
+data:-
+-------
+ insert into jamocha_internship.student (name,age,gender,subject,dob,email) values('saswat meher',23,'male','java','1998-03-11','saswatmeher05@gmail.com');
+
+

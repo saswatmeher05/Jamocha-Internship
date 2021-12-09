@@ -12,15 +12,17 @@ public class UserCrudMain {
 			throws ClassNotFoundException, ParseException, SQLException, UserCrudException {
 		UserCrudService service = new UserCrudService();
 		Scanner sc = new Scanner(System.in);
-		boolean needsInput=false;
-		System.out.println("Select one operation:");
-		System.out.println("1.Add User:");
-		System.out.println("2.Get User Details:");
-		System.out.println("3.Edit User Details:");
-		System.out.println("4.Delete User:");
-		System.out.println("5.Get All Users:");
-		int input = Integer.parseInt(sc.nextLine());
+		boolean needsInput=true;
+		
 		do {
+			System.out.println("Select one operation:");
+			System.out.println("1.Add User:");
+			System.out.println("2.Get User Details:");
+			System.out.println("3.Edit User Details:");
+			System.out.println("4.Delete User:");
+			System.out.println("5.Get All Users:");
+			System.out.println("6.Exit");
+			int input = Integer.parseInt(sc.nextLine());
 			switch (input) {
 			case 1:
 				try {
@@ -34,7 +36,9 @@ public class UserCrudMain {
 				break;
 			case 2:
 				service.getUserDetails(0);
-//			service.getAllUsers();
+				System.out.println();
+				System.out.println("---------------------------------------------------------------------------");
+				//service.getAllUsers();
 				break;
 			case 3:
 				System.out.println("---------------------------------------------------------------------------");
@@ -45,7 +49,6 @@ public class UserCrudMain {
 				System.out.println(message2);
 				System.out.println("---------------------------------------------------------------------------");
 				service.getAllUsers();
-				
 				break;
 			case 4:
 				System.out.println("---------------------------------------------------------------------------");
@@ -59,7 +62,17 @@ public class UserCrudMain {
 			case 5:
 				service.getAllUsers();
 				break;
+			case 6:
+				needsInput=false;
+				break;
 			default:
+				System.out.println("Select one operation:");
+				System.out.println("1.Add User:");
+				System.out.println("2.Get User Details:");
+				System.out.println("3.Edit User Details:");
+				System.out.println("4.Delete User:");
+				System.out.println("5.Get All Users:");
+				System.out.println("6.Exit");
 				break;
 			}
 		} while (needsInput);

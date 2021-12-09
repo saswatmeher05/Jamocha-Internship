@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import com.crud.dto.UserDTO;
+import com.crud.util.Subjects;
 import com.crud.util.UserCrudUtil;
 
 public class UserCrudDao {
@@ -125,16 +126,26 @@ public class UserCrudDao {
 
 //			Subject
 			do {
-				System.out.println("Enter Subject:");
-				subject = sc.nextLine();
+		            System.out.println("Enter Subject:");
+		            subject = sc.nextLine().toLowerCase();
+		            String subjects[] = subject.split(",");
+		            // Subjects subs[] = Subjects.values();
+		            if(subjects.length==1) {
+		            	subject=subjects[0];
+		            }
+		            for(int i=0;i<subjects.length;i++) {
+		                if(Subjects.contains(subjects[i])){
+		                    isValid=true;
+		                }else{
+		                    isValid=false;
+		                }
+		                
+		            }
+		            if(!isValid)
+		                    System.out.println("Invalid input Try Again!!");
 				
-					if(subject.equalsIgnoreCase("java") || subject.equalsIgnoreCase("python") || subject.equalsIgnoreCase("dotnet") || subject.equalsIgnoreCase("javascript") || subject.equalsIgnoreCase("html") || subject.equalsIgnoreCase("oracle") || subject.equalsIgnoreCase("mysql")) {
-						isValid=true;
-					}else {
-						isValid=false;
-						System.out.println("Invalid Input Try Again!!!");
-					}
-			}while(!isValid);
+			} while (!isValid);
+
 
 //			DOB
 			do {
