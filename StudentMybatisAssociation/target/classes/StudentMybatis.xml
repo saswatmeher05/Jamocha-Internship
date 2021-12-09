@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC '-//mybatis.org//DTD Config 3.0//EN'
+  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="StudentMybatis">
+
+	<resultMap type="StudentMybatis" id="result">
+		<result property="sid" column="sid" />
+		<result property="sname" column="sname" />
+		<result property="sage" column="sage" />
+		<result property="cid" column="cid" />
+	</resultMap>
+
+	<select id="selectById" parameterType="int" resultMap="result">
+		select * from studentmybatis
+		<where>
+			<if test="sid!=null">
+				sid like #{sid}
+			</if>
+		</where>
+	</select>
+
+	<select id="getAll" resultMap="result">
+		SELECT * FROM studentmybatis;
+	</select>
+
+	<insert id="insert" parameterType="StudentMybatis">
+		insert into studentmybatis(sname,sage,cid)
+		values(#{sname},#{sage},#{cid});
+		<!-- <selectKey keyProperty = "sid" resultType = "int" order = "AFTER"> 
+			select last_insert_id() as sid </selectKey> -->
+	</insert>
+
+	<update id="updateById" parameterType="StudentMybatis">
+		update studentmybatis set sname=#{sname},sage=#{sage},cid=#{cid}
+		<where>
+			<if test="sid!=null">
+				sid=#{sid}
+			</if>
+		</where>
+	</update>
+
+	<delete id="deleteById" parameterType="StudentMybatis">
+		delete from studentmybatis
+		<where>
+			<if test="sid!=null">
+				sid=#{sid}
+			</if>
+		</where>
+	</delete>
+
+</mapper>
+  
