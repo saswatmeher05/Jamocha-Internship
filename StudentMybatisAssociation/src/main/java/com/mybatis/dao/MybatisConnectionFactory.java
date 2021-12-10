@@ -13,9 +13,9 @@ public class MybatisConnectionFactory {
 		try {
 			String resource="mybatis-config.xml";
 			Reader reader=Resources.getResourceAsReader(resource);
-			if(factory==null) {
+			
 				factory=new SqlSessionFactoryBuilder().build(reader);
-			}
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

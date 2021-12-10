@@ -1,0 +1,30 @@
+----------------------
+studentmybatis table:-
+----------------------
+CREATE TABLE `studentmybatis` (
+  `sid` int NOT NULL AUTO_INCREMENT,
+  `sname` varchar(40) NOT NULL,
+  `sage` int NOT NULL,
+  `cid` int NOT NULL,
+  PRIMARY KEY (`sid`),
+  KEY `fk_course` (`cid`),
+  CONSTRAINT `fk_course` FOREIGN KEY (`cid`) REFERENCES `coursemybatis` (`cid`)
+);
+
+---------------------
+coursemybatis table:-
+---------------------
+
+Create Table
+
+CREATE TABLE `coursemybatis` (
+  `cid` int NOT NULL,
+  `cname` varchar(30) NOT NULL,
+  `cfees` double DEFAULT NULL,
+  PRIMARY KEY (`cid`)
+);
+
+-------------------------------------------------------
+join query to show student details and course details:-
+-------------------------------------------------------
+select s.sid,s.sname,s.sage,s.cid,c.cname,c.cfees from studentmybatis s inner join coursemybatis c on s.cid=c.cid;

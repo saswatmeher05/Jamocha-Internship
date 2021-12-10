@@ -1,11 +1,22 @@
 package com.mybatis.model;
 
+import java.util.List;
+
 public class CourseMybatis {
 	private int cid;
 	private String cname;
 	private double cfees;
-	
-	
+	private List<StudentMybatis> sbt;
+
+
+	public List<StudentMybatis> getSbt() {
+		return sbt;
+	}
+
+	public void setSbt(List<StudentMybatis> sbt) {
+		this.sbt = sbt;
+	}
+
 	public CourseMybatis() {}
 	
 	public CourseMybatis(int cid, String cname, double cfees) {
