@@ -16,20 +16,22 @@
 		</collection>
 	</resultMap>
 
-<select id="selectCourseById" parameterType="int" resultMap="result">
-	select c.cid,c.cname,c.cfees,s.sid,s.sname,s.sage,s.cid from
+	<select id="selectCourseById" parameterType="int"
+		resultMap="result">
+		select c.cid,c.cname,c.cfees,s.sid,s.sname,s.sage,s.cid from
 		studentmybatis s inner join
-		coursemybatis c on c.cid=s.cid 
+		coursemybatis c on c.cid=s.cid
 		<where>
 			<if test="cid!=null">
 				c.cid like #{cid}
 			</if>
 		</where>
-</select>	
+	</select>
 
 	<select id="selectStudentsJoin" resultMap="result"
 		resultType="CourseMybatis">
-		select c.cid,c.cname,c.cfees,s.sid,s.sname,s.sage,s.cid from
+		select c.cid,c.cname,c.cfees,s.sid,s.sname,s.sage,s.cid
+		from
 		studentmybatis s inner join
 		coursemybatis c on c.cid=s.cid where
 		c.cid=s.cid

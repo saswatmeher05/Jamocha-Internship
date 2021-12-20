@@ -6,5 +6,6 @@ import com.mybatis.model.CourseMybatis;
 
 public interface CourseMybatisService {
 	public List<CourseMybatis> getList();
+
 	public List<CourseMybatis> selectCourseById(int id);
 }

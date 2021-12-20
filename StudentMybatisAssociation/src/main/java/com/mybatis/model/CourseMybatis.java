@@ -8,7 +8,6 @@ public class CourseMybatis {
 	private double cfees;
 	private List<StudentMybatis> sbt;
 
-
 	public List<StudentMybatis> getSbt() {
 		return sbt;
 	}
@@ -17,8 +16,9 @@ public class CourseMybatis {
 		this.sbt = sbt;
 	}
 
-	public CourseMybatis() {}
-	
+	public CourseMybatis() {
+	}
+
 	public CourseMybatis(int cid, String cname, double cfees) {
 		this.cid = cid;
 		this.cname = cname;
@@ -28,18 +28,23 @@ public class CourseMybatis {
 	public int getCid() {
 		return cid;
 	}
+
 	public void setCid(int cid) {
 		this.cid = cid;
 	}
+
 	public String getCname() {
 		return cname;
 	}
+
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
+
 	public double getCfees() {
 		return cfees;
 	}
+
 	public void setCfees(double cfees) {
 		this.cfees = cfees;
 	}

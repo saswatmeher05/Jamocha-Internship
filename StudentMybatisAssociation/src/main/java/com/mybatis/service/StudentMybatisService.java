@@ -14,6 +14,10 @@ public interface StudentMybatisService {
 	public String updateById(int id);
 
 	public String deleteById(int id);
-	
+
 	public List<StudentMybatis> getAllJoin();
+
+	public StudentMybatis selectDynamic(StudentMybatis batis);
+
+	public List<StudentMybatis> selectDynamicColumns();
 }

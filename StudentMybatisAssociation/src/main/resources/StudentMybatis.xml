@@ -9,8 +9,7 @@
 		<result property="sname" column="sname" />
 		<result property="sage" column="sage" />
 		<result property="cid" column="cid" />
-		<association property="cb"
-			resultMap="courseMybatis" />
+		<association property="cb" resultMap="courseMybatis" />
 	</resultMap>
 
 	<resultMap type="CourseMybatis" id="courseMybatis">
@@ -18,6 +17,8 @@
 		<result property="cname" column="cname" />
 		<result property="cfees" column="cfees" />
 	</resultMap>
+
+
 
 	<select id="getAllJoin" resultMap="result">
 		select
@@ -28,10 +29,20 @@
 	<select id="selectById" parameterType="int" resultMap="result">
 		select * from studentmybatis
 		<where>
-			<if test="sid!=null">
+			<if test="sid != null">
 				sid like #{sid}
 			</if>
 		</where>
+	</select>
+
+	<select id="selectDynamic" parameterType="java.util.Map"
+		resultMap="result">
+		${key1}
+	</select>
+
+	<select id="selectDynamicColumn" parameterType="java.util.Map"
+		resultMap="result">
+		select ${cols} from studentmybatis;
 	</select>
 
 	<select id="getAll" resultMap="result">
@@ -39,25 +50,22 @@
 	</select>
 
 	<insert id="insert" parameterType="StudentMybatis">
-		insert into studentmybatis(sname,sage,cid)
+		insert into
+		studentmybatis(sname,sage,cid)
 		values(#{sname},#{sage},#{cid});
-		<!-- <selectKey keyProperty = "sid" resultType = "int" order = "AFTER"> 
-			select last_insert_id() as sid </selectKey> -->
 	</insert>
 
 	<update id="updateById" parameterType="StudentMybatis">
 		update studentmybatis set sname=#{sname},sage=#{sage},cid=#{cid}
-		<where>
-			<if test="sid!=null">
-				sid=#{sid}
-			</if>
-		</where>
+		<if test="sid != null">
+			, sid=#{sid}
+		</if>
 	</update>
 
 	<delete id="deleteById" parameterType="StudentMybatis">
 		delete from studentmybatis
 		<where>
-			<if test="sid!=null">
+			<if test="sid != null">
 				sid=#{sid}
 			</if>
 		</where>

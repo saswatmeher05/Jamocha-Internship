@@ -1,7 +1,5 @@
 package com.mybatis.model;
 
-import java.util.List;
-
 public class StudentMybatis {
 	private int sid;
 	private String sname;
