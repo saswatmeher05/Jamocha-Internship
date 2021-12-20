@@ -18,6 +18,7 @@ public class StudentMybatisDao {
 	public StudentMybatis selectById(int id) {
 		SqlSessionFactory factory = MybatisConnectionFactory.getSqlSessionfactory();
 		SqlSession session = factory.openSession();
+		
 		try {
 			StudentMybatis sbt = session.selectOne("StudentMybatis.selectById", id);
 			return sbt;
@@ -32,6 +33,7 @@ public class StudentMybatisDao {
 	public List<StudentMybatis> getAll() {
 		SqlSessionFactory factory = MybatisConnectionFactory.getSqlSessionfactory();
 		SqlSession session = factory.openSession();
+		
 		try {
 			List<StudentMybatis> list = session.selectList("StudentMybatis.getAll");
 			return list;
@@ -48,6 +50,7 @@ public class StudentMybatisDao {
 		SqlSession session = factory.openSession();
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
+		
 		try {
 			System.out.println("Enter Name:");
 			batis.setSname(sc.nextLine());
@@ -74,6 +77,7 @@ public class StudentMybatisDao {
 	public void updateById(StudentMybatis batis) {
 		SqlSessionFactory factory = MybatisConnectionFactory.getSqlSessionfactory();
 		SqlSession session = factory.openSession();
+		
 		try {
 			session.update("StudentMybatis.updateById", batis);
 			session.commit();
@@ -88,6 +92,7 @@ public class StudentMybatisDao {
 	public void deleteById(StudentMybatis batis) {
 		SqlSessionFactory factory = MybatisConnectionFactory.getSqlSessionfactory();
 		SqlSession session = factory.openSession();
+		
 		try {
 			session.delete("StudentMybatis.deleteById", batis);
 			session.commit();
@@ -102,6 +107,7 @@ public class StudentMybatisDao {
 	public List<StudentMybatis> getAllJoin() {
 		SqlSessionFactory factory = MybatisConnectionFactory.getSqlSessionfactory();
 		SqlSession session = factory.openSession();
+		
 		try {
 			List<StudentMybatis> list = session.selectList("StudentMybatis.getAllJoin");
 			return list;
@@ -116,10 +122,10 @@ public class StudentMybatisDao {
 	public StudentMybatis selectDynamic(Map<String, String> dynamicQuery) {
 		SqlSessionFactory factory = MybatisConnectionFactory.getSqlSessionfactory();
 		SqlSession session = factory.openSession();
+		
 		try {
 			StudentMybatis sbt = session.selectOne("StudentMybatis.selectDynamic",
 					(HashMap<String, String>) dynamicQuery);
-
 			return sbt;
 		} finally {
 			session.close();
@@ -133,6 +139,7 @@ public class StudentMybatisDao {
 	public List<StudentMybatis> selectDynamicColumns(Map<String, String> dyanmicQuery) {
 		SqlSessionFactory factory = MybatisConnectionFactory.getSqlSessionfactory();
 		SqlSession session = factory.openSession();
+		
 		try {
 			List<StudentMybatis> list = session.selectList("StudentMybatis.selectDynamicColumn",
 					(HashMap<String, String>) dyanmicQuery);

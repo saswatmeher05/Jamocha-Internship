@@ -24,6 +24,7 @@ public class CourseBatisUtils {
 		System.out.printf("%-8s", batis.getCfees());
 		System.out.println();
 		CourseBatisUtils.printTableHeaderStudentOnly();
+		
 		for (StudentMybatis sbt : batis.getSbt()) {
 			System.out.printf("%-4s", sbt.getSid());
 			System.out.printf("%-20s", sbt.getSname());
@@ -47,6 +48,7 @@ public class CourseBatisUtils {
 		System.out.printf("%-10s", batis.getCname());
 		System.out.printf("%-8s", batis.getCfees());
 		CourseBatisUtils.printTableHeaderStudentOnly();
+		
 		for (StudentMybatis sbt : batis.getSbt()) {
 			System.out.printf("%-4s", sbt.getSid());
 			System.out.printf("%-20s", sbt.getSname());

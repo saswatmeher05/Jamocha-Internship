@@ -56,19 +56,11 @@
 	</insert>
 
 	<update id="updateById" parameterType="StudentMybatis">
-		update studentmybatis set sname=#{sname},sage=#{sage},cid=#{cid}
-		<if test="sid != null">
-			, sid=#{sid}
-		</if>
+		update studentmybatis set sname=#{sname},sage=#{sage},cid=#{cid} where sid=#{sid}
 	</update>
 
 	<delete id="deleteById" parameterType="StudentMybatis">
-		delete from studentmybatis
-		<where>
-			<if test="sid != null">
-				sid=#{sid}
-			</if>
-		</where>
+		delete from studentmybatis where sid=#{sid}
 	</delete>
 
 </mapper>
