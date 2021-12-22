@@ -25,7 +25,7 @@
 				</div>
 				<div class="col-4">
 					<s:input path="fname" type="text" name="fname" id="fname"
-						class="form-control" />
+						class="form-control" required="true" />
 				</div>
 				<div class="col-5">
 					<span id="fnameError"></span>
@@ -39,7 +39,7 @@
 				</div>
 				<div class="col-4">
 					<s:input path="lname" type="text" name="lname" id="lname"
-						class="form-control" />
+						class="form-control" required="true" />
 				</div>
 				<div class="col-5">
 					<span id="lnameError"></span>
@@ -52,7 +52,7 @@
 					<label for="age" class="px-2">Age:</label>
 				</div>
 				<div class="col-4">
-					<s:input path="age" name="age" id="age" class="form-control" />
+					<s:input path="age" type="text" name="age" id="age" class="form-control" required="true" />
 				</div>
 				<div class="col-5">
 					<span id="ageError"></span>
@@ -66,7 +66,7 @@
 				</div>
 				<div class="col-4 text-center">
 					<div class="form-check-inline">
-						<s:radiobutton path="gender" value="male" class="form-check-input" />
+						<s:radiobutton path="gender" value="male" class="form-check-input" checked="true" />
 						Male &nbsp;&nbsp;
 						<s:radiobutton path="gender" value="female" name="gender"
 							id="gender" class="form-check-input" />
@@ -85,7 +85,7 @@
 				</div>
 				<div class="col-4">
 					<s:input path="desg" type="text" name="desg" id="desg"
-						class="form-control" />
+						class="form-control" required="true" />
 				</div>
 				<div class="col-5">
 					<span id="desgError"></span>
@@ -98,10 +98,10 @@
 					<label for="skills" class="px-2">Skills</label>
 				</div>
 				<div class="col-4">
-				<%-- ${employee.getSkills()}
+					<%-- ${employee.getSkills()}
 				${employee.getSkills().contains("java")} --%>
 					<s:select path="skills" multiple="true"
-						class="form-control text-center" name="skills" id="skills">
+						class="form-control text-center" name="skills" id="skills" required="true">
 						<s:option value="java">Java</s:option>
 						<s:option value="python">Python</s:option>
 						<s:option value="php">PHP</s:option>
@@ -126,7 +126,7 @@
 				</div>
 				<div class="col-4">
 					<s:input path="doj" type="date" name="doj" id="doj"
-						class="form-control text-center" />
+						class="form-control text-center" required="true" />
 				</div>
 				<div class="col-5">
 					<span id="dojError"></span>
@@ -140,7 +140,7 @@
 				</div>
 				<div class="col-4">
 					<s:input path="city" type="text" name="city" id="city"
-						class="form-control" />
+						class="form-control" required="true" />
 				</div>
 				<div class="col-5">
 					<span id="cityError"></span>
@@ -155,7 +155,7 @@
 				<div class="col-4">
 					<!--- India states -->
 					<s:select path="state" id="state" name="state"
-						class="form-control text-center">
+						class="form-control text-center" required="true">
 						<s:option value="">-select state-</s:option>
 						<s:option value="Andaman and Nicobar Islands">Andaman and
 							Nicobar Islands</s:option>
