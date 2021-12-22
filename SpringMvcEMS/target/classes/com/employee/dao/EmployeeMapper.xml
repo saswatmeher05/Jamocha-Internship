@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.employee.model.EmployeeDTO">
+
+	<resultMap type="com.employee.model.EmployeeDTO" id="result">
+		<id property="id" column="id" />
+		<result property="fname" column="fname" />
+		<result property="lname" column="lname" />
+		<result property="age" column="age" />
+		<result property="gender" column="gender" />
+		<result property="desg" column="desg" />
+		<result property="skills" column="skills" />
+		<result property="doj" column="doj" />
+		<result property="city" column="city" />
+		<result property="state" column="state" />
+	</resultMap>
+
+	<select id="getAllEmployees" resultMap="result">
+		SELECT * FROM employee
+	</select>
+
+	<insert id="insert"
+		parameterType="com.employee.model.EmployeeDTO" useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO
+		employee(fname,lname,age,gender,desg,skills,doj,city,state)
+		values(#{fname},#{lname},#{age},#{gender},#{desg},#{skills},#{doj},#{city},#{state})
+	</insert>
+
+	<update id="update"
+		parameterType="com.employee.model.EmployeeDTO">
+		UPDATE employee set
+		fname=#{fname},lname=#{lname},age=#{age},gender=#{gender},desg=#{desg},skills=#{skills},doj=#{doj},city=#{city},state=#{state} WHERE id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM employee where id=#{id}
+	</delete>
+	
+	<select id="findById" parameterType="int" resultMap="result">
+		SELECT * FROM employee WHERE id=#{id}
+	</select>
+
+</mapper>
