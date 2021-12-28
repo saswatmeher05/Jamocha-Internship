@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.employee.dao.EmployeeMapper;
@@ -31,7 +32,7 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("/saveEmployee")
-	public String saveEmployee(@ModelAttribute("employee") EmployeeDTO employee) {
+	public String saveEmployee(@ModelAttribute("employee") EmployeeDTO employee,Model model) {
 		if(employee.getId()==null) {
 			employeeMapper.saveEmployee(employee);
 		}else {
@@ -48,7 +49,20 @@ public class EmployeeController {
 	
 	@RequestMapping("/displayDeleteForm")
 	public String deleteEmployee(@RequestParam("id") int id, Model model) {
-		employeeMapper.deleteEmployee(id);
-		return "redirect:/ems/listOfEmployee";
+		String s=employeeMapper.deleteEmployee(id);
+		model.addAttribute("delMsg",s);
+		return "forward:/ems/listOfEmployee";
+	}
+	
+	//Error Pages
+	
+	@RequestMapping(value="/404")
+	public String page404(Model model) {
+		return "404";
+	}
+	
+	@RequestMapping(value="/500")
+	public String page500(Model model) {
+		return "500";
 	}
 }

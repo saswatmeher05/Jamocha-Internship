@@ -33,15 +33,18 @@
 	<update id="update"
 		parameterType="com.employee.model.EmployeeDTO">
 		UPDATE employee set
-		fname=#{fname},lname=#{lname},age=#{age},gender=#{gender},desg=#{desg},skills=#{skills},doj=#{doj},city=#{city},state=#{state} WHERE id=#{id}
+		fname=#{fname},lname=#{lname},age=#{age},gender=#{gender},desg=#{desg},skills=#{skills},doj=#{doj},city=#{city},state=#{state}
+		WHERE id=#{id}
 	</update>
-	
+
 	<delete id="delete" parameterType="int">
-		DELETE FROM employee where id=#{id}
+		DELETE FROM employee where
+		id=#{id}
 	</delete>
-	
+
 	<select id="findById" parameterType="int" resultMap="result">
-		SELECT * FROM employee WHERE id=#{id}
+		SELECT *
+		FROM employee WHERE id=#{id}
 	</select>
 
 </mapper>

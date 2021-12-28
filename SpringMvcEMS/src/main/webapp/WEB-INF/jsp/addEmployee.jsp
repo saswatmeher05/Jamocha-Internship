@@ -3,21 +3,37 @@
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="s"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!Doctype html>
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EMS</title>
+<title>EMS-Add Employee</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 </head>
 <body>
-	<nav class="navbar bg-primary text-white"> <span
-		class="navbar-brand h1 bold mb-0">Employee Management System</span> </nav>
-	<div class="container">
+	<nav class="navbar bg-primary text-white">
+		<span class="navbar-brand h1 bold mb-0">Employee Management
+			System</span>
+	</nav>
+	<div class="row my-4">
+		<div class="col-6 float-left">
+			<h2 class="text-dark ml-5 pl-5">Add Employee</h2>
+		</div>
+		<div class="col-6 pr-5">
+			<a href="listOfEmployee" class="btn btn-secondary float-right mr-5">Back To Employee Table</a>
+		</div>
+	</div>
+	<div class="container mt-5">
 
-		<s:form action="saveEmployee" method="post" modelAttribute="employee">
-			<h1 class="my-4 text-dark">Add Employee</h1>
+		<s:form id="frm" action="saveEmployee" method="post"
+			modelAttribute="employee">
+			
 			<s:hidden path="id" />
+			<s:hidden path="" value="${employee.skills}" id="skills" />
 			<!-- First Name -->
 			<div class="row my-1">
 				<div class="col-3">
@@ -25,7 +41,7 @@
 				</div>
 				<div class="col-4">
 					<s:input path="fname" type="text" name="fname" id="fname"
-						class="form-control" required="true" />
+						class="form-control" />
 				</div>
 				<div class="col-5">
 					<span id="fnameError"></span>
@@ -39,7 +55,7 @@
 				</div>
 				<div class="col-4">
 					<s:input path="lname" type="text" name="lname" id="lname"
-						class="form-control" required="true" />
+						class="form-control" />
 				</div>
 				<div class="col-5">
 					<span id="lnameError"></span>
@@ -52,7 +68,8 @@
 					<label for="age" class="px-2">Age:</label>
 				</div>
 				<div class="col-4">
-					<s:input path="age" type="text" name="age" id="age" class="form-control" required="true" />
+					<s:input path="age" type="text" name="age" id="age"
+						class="form-control" />
 				</div>
 				<div class="col-5">
 					<span id="ageError"></span>
@@ -66,11 +83,8 @@
 				</div>
 				<div class="col-4 text-center">
 					<div class="form-check-inline">
-						<s:radiobutton path="gender" value="male" class="form-check-input" checked="true" />
-						Male &nbsp;&nbsp;
-						<s:radiobutton path="gender" value="female" name="gender"
-							id="gender" class="form-check-input" />
-						Female
+						<s:radiobutton path="gender" value="male" name="gender" id="gender" class="form-check-input" />Male &nbsp;&nbsp;
+						<s:radiobutton path="gender" value="female" name="gender" id="gender" class="form-check-input" />Female
 					</div>
 				</div>
 				<div class="col-5">
@@ -85,7 +99,7 @@
 				</div>
 				<div class="col-4">
 					<s:input path="desg" type="text" name="desg" id="desg"
-						class="form-control" required="true" />
+						class="form-control" />
 				</div>
 				<div class="col-5">
 					<span id="desgError"></span>
@@ -98,10 +112,19 @@
 					<label for="skills" class="px-2">Skills</label>
 				</div>
 				<div class="col-4">
-					<%-- ${employee.getSkills()}
-				${employee.getSkills().contains("java")} --%>
-					<s:select path="skills" multiple="true"
-						class="form-control text-center" name="skills" id="skills" required="true">
+				<s:checkbox path="skills" name="skills" value="java"/>Java &nbsp;
+				<s:checkbox path="skills" name="skills" value="python"/>Python &nbsp;
+				<s:checkbox path="skills" name="skills" value="php"/>PHP &nbsp;
+				<s:checkbox path="skills" name="skills" value="oracle"/>Oracle &nbsp;
+				<s:checkbox path="skills" name="skills" value="spring"/>Spring <br>
+				<s:checkbox path="skills" name="skills" value="html"/>HTML &nbsp;
+				<s:checkbox path="skills" name="skills" value="css"/>css &nbsp;
+				<s:checkbox path="skills" name="skills" value="javascript"/>JavaScript &nbsp;
+				<s:checkbox path="skills" name="skills" value="servlet"/>Servlet &nbsp;
+				<s:checkbox path="skills" name="skills" value="jsp"/>JSP
+				
+					<%-- <s:select path="skills" multiple="true"
+						class="form-control text-center" name="skills" id="skills">
 						<s:option value="java">Java</s:option>
 						<s:option value="python">Python</s:option>
 						<s:option value="php">PHP</s:option>
@@ -112,21 +135,21 @@
 						<s:option value="javascript">javascript</s:option>
 						<s:option value="servlet">Servlet</s:option>
 						<s:option value="jsp">JSP</s:option>
-					</s:select>
+					</s:select> --%>
 				</div>
 				<div class="col-5">
 					<span id="skillsError"></span>
 				</div>
 			</div>
 
-			<!-- Designation -->
+			<!-- Date of Joining -->
 			<div class="row my-1">
 				<div class="col-3">
 					<label for="doj" class="px-2">Date Of Joining:</label>
 				</div>
 				<div class="col-4">
 					<s:input path="doj" type="date" name="doj" id="doj"
-						class="form-control text-center" required="true" />
+						class="form-control text-center" />
 				</div>
 				<div class="col-5">
 					<span id="dojError"></span>
@@ -140,7 +163,7 @@
 				</div>
 				<div class="col-4">
 					<s:input path="city" type="text" name="city" id="city"
-						class="form-control" required="true" />
+						class="form-control" />
 				</div>
 				<div class="col-5">
 					<span id="cityError"></span>
@@ -155,7 +178,7 @@
 				<div class="col-4">
 					<!--- India states -->
 					<s:select path="state" id="state" name="state"
-						class="form-control text-center" required="true">
+						class="form-control text-center">
 						<s:option value="">-select state-</s:option>
 						<s:option value="Andaman and Nicobar Islands">Andaman and
 							Nicobar Islands</s:option>
@@ -203,12 +226,16 @@
 			</div>
 
 			<input type="submit" value="Save" class="btn btn-primary px-5 mt-2">&nbsp;
-			<a href="listOfEmployee" class="btn btn-secondary mt-2">Back To
-				Employee Table</a>
+			
 		</s:form>
 	</div>
 	<!-- Container End -->
 
+	<footer
+		class="card-footer text-center bg-light text-muted fixed-bottom">
+		@Copyright Employee Management System </footer>
+		
+
+	<script src="<c:url value="/resources/js/validate.js"/>"></script>
 </body>
 </html>
-<jsp:include page="common.jsp" />

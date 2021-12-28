@@ -1,13 +1,10 @@
 package com.employee.dao;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.util.List;
 
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.stereotype.Repository;
 
 import com.employee.model.EmployeeDTO;
@@ -23,6 +20,10 @@ public class EmployeeMapper {
 		SqlSessionFactory factory=MybatisConnectionFactory.getSessionFactory();
 		SqlSession session=factory.openSession();
 		List<EmployeeDTO> list=session.selectList("getAllEmployees");
+		for(EmployeeDTO dto:list) {
+			String s[]=dto.getDoj().split("-");
+			dto.setDoj(s[s.length-1]+"-"+s[s.length-2]+"-"+s[s.length-3]);
+		}
 		session.commit();
 		session.close();
 		return list;
@@ -53,12 +54,17 @@ public class EmployeeMapper {
 	/* 
 	 * Delete Employee 
 	 */
-	public void deleteEmployee(int id) {
+	public String deleteEmployee(int id) {
 		SqlSessionFactory factory=MybatisConnectionFactory.getSessionFactory();
 		SqlSession session=factory.openSession();
-		session.delete("delete", id);
+		int k=session.delete("delete", id);
 		session.commit();
 		session.close();
+		if(k>0) {
+			return "Employee Deleted Successfully";
+		}else {
+			return null;
+		}
 	}
 	
 	/* 
