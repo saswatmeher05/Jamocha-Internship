@@ -22,7 +22,7 @@
 		<span class="navbar-brand h1 bold mb-0">Employee Management
 			System</span>
 	</nav>
-	<div class="container-fluid mt-5">
+	<div class="container-fluid mt-5 mb-5">
 		<h2 id="deleteMsg">${delMsg}</h2>
 		<div>
 			<a href="showFormForAdd" class="btn btn-success float-right">Add
@@ -30,7 +30,7 @@
 		</div>
 
 		<div>
-			<table class="table table-hover table-striped">
+			<table class="table table-hover table-striped shadow">
 				<thead class="bg-primary text-white">
 					<tr>
 						<th>Action</th>
@@ -85,9 +85,9 @@
 
 	</div>
 
-	<footer
-		class="card-footer text-center bg-light text-muted fixed-bottom">
-		@Copyright Employee Management System </footer>
+	<footer class="card-footer text-center bg-light text-muted fixed-bottom py-1">
+		@Copyright Employee Management System 
+	</footer>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			var val=$("#deleteMsg").val();

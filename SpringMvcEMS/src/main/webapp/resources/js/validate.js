@@ -257,6 +257,9 @@ $(document).ready(function () {
             return false;
         }
     });
+ $("#smt").click(function(){
+	alert("Sumit Clicked");
+	});
 	
 
 //for dynamic checkboxes

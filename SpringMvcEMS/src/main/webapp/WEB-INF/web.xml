@@ -24,5 +24,5 @@
 		<error-code>500</error-code>
 		<location>/ems/500</location>
 	</error-page>
-	
+
 </web-app>
