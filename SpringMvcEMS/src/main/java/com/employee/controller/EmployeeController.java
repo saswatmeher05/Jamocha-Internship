@@ -56,12 +56,12 @@ public class EmployeeController {
 	
 	//Error Pages
 	
-	@RequestMapping(value="/404")
+	@RequestMapping("/404")
 	public String page404(Model model) {
 		return "404";
 	}
 	
-	@RequestMapping(value="/500")
+	@RequestMapping("/500")
 	public String page500(Model model) {
 		return "500";
 	}

@@ -21,7 +21,7 @@
 	</nav>
 	<div class="row my-4">
 		<div class="col-6 float-left">
-			<h2 class="text-dark ml-5 pl-5">Add Employee</h2>
+			<h1 class="text-dark ml-5 pl-5">Employee</h1>
 		</div>
 		<div class="col-6 pr-5">
 			<a href="listOfEmployee" class="btn btn-secondary float-right mr-5">Back To Employee Table</a>

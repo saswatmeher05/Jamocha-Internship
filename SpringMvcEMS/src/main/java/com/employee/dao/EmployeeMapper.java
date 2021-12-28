@@ -23,6 +23,7 @@ public class EmployeeMapper {
 		for(EmployeeDTO dto:list) {
 			String s[]=dto.getDoj().split("-");
 			dto.setDoj(s[s.length-1]+"-"+s[s.length-2]+"-"+s[s.length-3]);
+			dto.setSkills(dto.getSkills().replaceAll(",", ", "));
 		}
 		session.commit();
 		session.close();
@@ -35,6 +36,7 @@ public class EmployeeMapper {
 	public void saveEmployee(EmployeeDTO employee) {
 		SqlSessionFactory factory=MybatisConnectionFactory.getSessionFactory();
 		SqlSession session=factory.openSession();
+//		employee.setSkills(employee.getSkills().replaceAll(",", ", "));
 		session.insert("insert", employee);
 		session.commit();
 		session.close();
