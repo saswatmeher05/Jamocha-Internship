@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="s"%>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,17 +16,36 @@
 	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+	.container-fluid{
+	width:85%;
+	text-align:left;
+	}
+</style>
 </head>
 <body>
 	<nav class="navbar bg-primary text-white">
 		<span class="navbar-brand h1 bold mb-0">Employee Management
 			System</span>
 	</nav>
-	<div class="container-fluid mt-5 mb-5">
-		<h2 id="deleteMsg">${delMsg}</h2>
+	<div class="container-fluid mt-1 mb-5">
+		<%-- <h2 id="deleteMsg">${delMsg}</h2>
 		<div>
 			<a href="showFormForAdd" class="btn btn-success float-right">Add
 				Employee</a>
+		</div> --%>
+		
+		<div class="d-flex justify-content-between">
+			<div class="p-2 mt-1">
+				<h1>Employee List</h1>
+			</div>
+			<div class="p-2 align-self-end">
+				<h4 id="deleteMsg">${delMsg}</h4>
+			</div>
+			<div class="p-2 align-self-end mb-1">
+				<a href="showFormForAdd" class="btn btn-success float-right">Add
+				Employee</a>
+			</div>
 		</div>
 
 		<div>
@@ -56,12 +75,12 @@
 					</c:url>
 					<tbody>
 						<tr>
-							<td>
-							<a href="${updateLink}"><i class="fa fa-edit" style="font-size: 24px; color: orange"></i></a> &nbsp;&nbsp; 
-							<a href="${deleteLink}" onclick="if(!(confirm('Are you sure want to delete this Employee permanently?'))) return false">
-								<i class="fa fa-trash" style="font-size: 24px; color: red"></i>
-							</a>
-							</td>
+							<td><a href="${updateLink}"><i class="fa fa-edit"
+									style="font-size: 24px; color: orange"></i></a> &nbsp;&nbsp; <a
+								href="${deleteLink}"
+								onclick="if(!(confirm('Are you sure want to delete this Employee permanently?'))) return false">
+									<i class="fa fa-trash" style="font-size: 24px; color: red"></i>
+							</a></td>
 							<td>${e.fname}</td>
 							<td>${e.lname}</td>
 							<td>${e.age}</td>
@@ -85,14 +104,16 @@
 
 	</div>
 
-	<footer class="card-footer text-center bg-light text-muted fixed-bottom py-1">
-		@Copyright Employee Management System 
-	</footer>
+	<footer
+		class="card-footer text-center bg-light text-muted fixed-bottom py-1">
+		@Copyright Employee Management System </footer>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			var val=$("#deleteMsg").val();
 			if(val!=null){
 				$("#deleteMsg").show();
+				$("#deleteMsg").css("color","orange");
+				
 			}else{
 				$("#deleteMsg").hide();
 			}

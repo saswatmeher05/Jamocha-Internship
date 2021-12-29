@@ -2,229 +2,234 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="s"%>
-<!Doctype html>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="s"%><!Doctype html>
 <html>
+
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EMS-Add Employee</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EMS-Add Employee</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 	<style type="text/css">
-	.bgr{
-	background-color:#F2F2F2; 
-	}
+		.bgr {
+			background-color: #F2F2F2;
+		}
+		.container-fluid{
+			width:85%;
+		}
 	</style>
 </head>
+
 <body>
 	<nav class="navbar bg-primary text-white">
 		<span class="navbar-brand h1 bold mb-0">Employee Management System</span>
 	</nav>
-	<div class="container mb-5">
-	<div class="d-flex">
-			<div class="mr-auto p-2 mt-3">
+	<div class="container-fluid mb-5">
+		<div class="d-flex">
+			<div class="mr-auto p-2 mt-2">
 				<h1>Employee</h1>
 			</div>
-			<div class="p-2 align-self-end">
-				<a href="listOfEmployee" class="btn btn-secondary">Back</a>
+			<div class="p-2 align-self-end mb-1">
+				<a href="listOfEmployee" class="btn btn-secondary" style="width:100px">Back</a>
 			</div>
 		</div>
-		<s:form id="frm" action="saveEmployee" method="post"
-			modelAttribute="employee">
-	
-	<div class="rounded shadow px-3 py-3 bgr">
-
+		<s:form id="frm" action="saveEmployee" method="post" modelAttribute="employee">
+		
 			<s:hidden path="id" />
 			<s:hidden path="" value="${employee.skills}" id="skills" />
-			
-			<!-- First Name -->
-			<div class="row my-1">
-				<div class="col-2">
-					<label for="fname" class="px-2">First Name:</label>
-				</div>
-				<div class="col-10">
-					<s:input path="fname" type="text" name="fname" id="fname" class="form-control" />
-					<span id="fnameError"></span>
-				</div>
-				
-			</div>
-			
-			
-			<!-- Last Name -->
-			<div class="row my-1">
-				<div class="col-2">
-					<label for="lname" class="px-2">Last Name:</label>
-				</div>
-				<div class="col-10">
-					<s:input path="lname" type="text" name="lname" id="lname" class="form-control" />
-					<span id="lnameError"></span>
-				</div>
-			</div>
-			
-			
-			<!-- Age -->
-			<div class="row my-1">
-				<div class="col-2">
-					<label for="age" class="px-2">Age:</label>
-				</div>
-				<div class="col-10">
-					<s:input path="age" type="text" name="age" id="age" class="form-control" />
-					<span id="ageError"></span>
-				</div>
-			</div>
-			
-			
-			<!-- Gender -->
-			<div class="row my-1">
-				<div class="col-2">
-					<label for="gender" class="px-2">Gender:</label>
-				</div>
-				<div class="col-10">
-					<div class="form-check-inline">
-						<s:radiobutton path="gender" value="male" name="gender" id="gender" />Male &nbsp;&nbsp;
-						<s:radiobutton path="gender" value="female" name="gender" id="gender" />Female
-					</div><br>
-					<span id="genderError"></span>
-				</div>
-			</div>
 
-			<!-- Designation -->
-			<div class="row my-1">
-				<div class="col-2">
-					<label for="desg" class="px-2">Designation:</label>
-				</div>
-				<div class="col-10">
-					<s:input path="desg" type="text" name="desg" id="desg" class="form-control" />
-					<span id="desgError"></span>
-				</div>
-			</div>
+			<table class="table">
+				<!-- First Name -->
+				<tr>
+					<td class="col-md-2">
+						<label for="fname">First Name:</label>
+					</td>
+					<td>
+						<s:input path="fname" type="text" name="fname" id="fname" class="form-control" />
+						<span id="fnameError"></span>
+					</td>
+				</tr>
 
-			<!-- Skills -->
-			<div class="row my-1">
-				<div class="col-2">
-					<label for="skills" class="px-2">Skills</label>
-				</div>
-				<div class="col-10">
-				<s:checkbox path="skills" name="skills" value="java"/> Java &nbsp;
-				<s:checkbox path="skills" name="skills" value="python"/> Python &nbsp;
-				<s:checkbox path="skills" name="skills" value="php"/> PHP &nbsp;
-				<s:checkbox path="skills" name="skills" value="oracle"/> Oracle &nbsp;
-				<s:checkbox path="skills" name="skills" value="spring"/> Spring &nbsp;
-				<s:checkbox path="skills" name="skills" value="html"/> HTML &nbsp;
-				<s:checkbox path="skills" name="skills" value="css"/> css &nbsp;
-				<s:checkbox path="skills" name="skills" value="javascript"/> JavaScript &nbsp;
-				<s:checkbox path="skills" name="skills" value="servlet"/> Servlet &nbsp;
-				<s:checkbox path="skills" name="skills" value="jsp"/> JSP
-				
-					<%-- <s:select path="skills" multiple="true"
-						class="form-control text-center" name="skills" id="skills">
-						<s:option value="java">Java</s:option>
-						<s:option value="python">Python</s:option>
-						<s:option value="php">PHP</s:option>
-						<s:option value="oracle">Oracle</s:option>
-						<s:option value="spring">Spring</s:option>
-						<s:option value="html">HTML</s:option>
-						<s:option value="css">CSS</s:option>
-						<s:option value="javascript">javascript</s:option>
-						<s:option value="servlet">Servlet</s:option>
-						<s:option value="jsp">JSP</s:option>
-					</s:select> --%>
-					<br>
-					<span id="skillsError"></span>
-				</div>
-				
-			</div>
+				<!-- Last Name -->
+				<tr>
+					<td>
+						<label for="lname">Last Name:</label>
+					</td>
+					<td>
+						<s:input path="lname" type="text" name="lname" id="lname" class="form-control" />
+						<span id="lnameError"></span>
+					</td>
+				</tr>
 
-			<!-- Date of Joining -->
-			<div class="row my-1">
-				<div class="col-2">
-					<label for="doj" class="px-2">Date Of Joining:</label>
-				</div>
-				<div class="col-10">
-					<s:input path="doj" type="date" name="doj" id="doj"
-						class="form-control" placeholder=" "/>
-					<span id="dojError"></span>
-				</div>
-			</div>
+				<!-- Last Name -->
+				<tr>
+					<td>
+						<label for="age">Age:</label>
+					</td>
+					<td>
+						<s:input path="age" type="text" name="age" id="age" class="form-control" />
+						<span id="ageError"></span>
+					</td>
+				</tr>
 
-			<!-- City -->
-			<div class="row my-1">
-				<div class="col-2">
-					<label for="city" class="px-2">City:</label>
-				</div>
-				<div class="col-10">
-					<s:input path="city" type="text" name="city" id="city" class="form-control" />
-					<span id="cityError"></span>
-				</div>
-			</div>
 
-			<!-- State -->
-			<div class="row my-1">
-				<div class="col-2">
-					<label for="state" class="px-2">State:</label>
-				</div>
-				<div class="col-10">
-					<!--- India states -->
-					<s:select path="state" id="state" name="state"
-						class="form-control">
-						<s:option value="">-select state-</s:option>
-						<s:option value="Andaman and Nicobar Islands">Andaman and
-							Nicobar Islands</s:option>
-						<s:option value="Andhra Pradesh">Andhra Pradesh</s:option>
-						<s:option value="Arunachal Pradesh">Arunachal Pradesh</s:option>
-						<s:option value="Assam">Assam</s:option>
-						<s:option value="Bihar">Bihar</s:option>
-						<s:option value="Chandigarh">Chandigarh</s:option>
-						<s:option value="Chhattisgarh">Chhattisgarh</s:option>
-						<s:option value="Dadra Nagar Haveli">Dadra Nagar Haveli</s:option>
-						<s:option value="Daman and Diu">Daman and Diu</s:option>
-						<s:option value="Delhi">Delhi</s:option>
-						<s:option value="Goa">Goa</s:option>
-						<s:option value="Gujarat">Gujarat</s:option>
-						<s:option value="Haryana">Haryana</s:option>
-						<s:option value="Himachal Pradesh">Himachal Pradesh</s:option>
-						<s:option value="Jammu and Kashmir">Jammu and Kashmir</s:option>
-						<s:option value="Jharkhand">Jharkhand</s:option>
-						<s:option value="Karnataka">Karnataka</s:option>
-						<s:option value="Kerala">Kerala</s:option>
-						<s:option value="Ladakh">Ladakh</s:option>
-						<s:option value="Lakshadweep">Lakshadweep</s:option>
-						<s:option value="Madhya Pradesh">Madhya Pradesh</s:option>
-						<s:option value="Maharashtra">Maharashtra</s:option>
-						<s:option value="Manipur">Manipur</s:option>
-						<s:option value="Meghalaya">Meghalaya</s:option>
-						<s:option value="Mizoram">Mizoram</s:option>
-						<s:option value="Nagaland">Nagaland</s:option>
-						<s:option value="Odisha">Odisha</s:option>
-						<s:option value="Puducherry">Puducherry</s:option>
-						<s:option value="Punjab">Punjab</s:option>
-						<s:option value="Rajasthan">Rajasthan</s:option>
-						<s:option value="Sikkim">Sikkim</s:option>
-						<s:option value="Tamil Nadu">Tamil Nadu</s:option>
-						<s:option value="Telangana">Telangana</s:option>
-						<s:option value="Tripura">Tripura</s:option>
-						<s:option value="Uttar Pradesh">Uttar Pradesh</s:option>
-						<s:option value="Uttarakhand">Uttarakhand</s:option>
-						<s:option value="West Bengal">West Bengal</s:option>
-					</s:select>
-					<span id="stateError"></span>
-				</div>
-			</div>
+				<!-- Gender -->
+				<tr>
+					<td>
+						<label for="gender">Gender:</label>
+					</td>
+					<td>
+						<div class="form-check form-check-inline">
+							<s:radiobutton path="gender" class="form-check-input" name="gender" value="male" />Male
+						</div>
+						<div class="form-check  form-check-inline">
+							<s:radiobutton path="gender" class="form-check-input" name="gender" value="female" />Female
+						</div>
+						<span id="genderError"></span>
+					</td>
+				</tr>
 
-			<input type="submit" id="smt" value="Save" class="btn btn-primary mt-2 px-5">
-			
-	</div>
-	<!-- Container End -->
+				<!-- Designation -->
+				<tr>
+					<td>
+						<label for="desg">Designation:</label>
+					</td>
+					<td>
+						<s:input path="desg" type="text" name="desg" id="desg" class="form-control" />
+						<span id="desgError"></span>
+					</td>
+				</tr>
+
+				<!-- Skills -->
+				<tr>
+					<td>
+						<label for="skills">Skills:</label>
+					</td>
+					<td>
+						<div class="form-check form-check-inline">
+							<s:checkbox path="skills" class="form-check-input"  name="skills" value="java" /> Java
+						</div>
+						<div class="form-check form-check-inline">
+							<s:checkbox path="skills" class="form-check-input"  name="skills" value="php" /> PHP
+						</div>
+						<div class="form-check form-check-inline">
+							<s:checkbox path="skills" class="form-check-input"  name="skills" value="python" /> Python
+						</div>
+						<div class="form-check form-check-inline">
+							<s:checkbox path="skills" class="form-check-input"  name="skills" value="oracle" /> Oracle
+						</div>
+						<div class="form-check form-check-inline">
+							<s:checkbox path="skills" class="form-check-input"  name="skills" value="spring" /> Spring
+						</div>
+						<div class="form-check form-check-inline">
+							<s:checkbox path="skills" class="form-check-input"  name="skills" value="html" /> HTML
+						</div>
+						<div class="form-check form-check-inline">
+							<s:checkbox path="skills" class="form-check-input"  name="skills" value="css" /> CSS
+						</div>
+						<div class="form-check form-check-inline">
+							<s:checkbox path="skills" class="form-check-input"  name="skills" value="javascript" /> JavaScript
+						</div>
+						<div class="form-check form-check-inline">
+							<s:checkbox path="skills" class="form-check-input"  name="skills" value="servlet" /> Servlet
+						</div>
+						<div class="form-check form-check-inline">
+							<s:checkbox path="skills" class="form-check-input"  name="skills" value="jsp" /> JSP
+						</div>
+						<span id="skillsError"></span>
+					</td>
+				</tr>
+
+				<!-- Date of Joining -->
+				<tr>
+					<td>
+						<label for="doj">Date Of Joining:</label>
+					</td>
+					<td>
+						<s:input path="doj" type="date" name="doj" id="doj" class="form-control" placeholder=" " />
+						<span id="dojError"></span>
+					</td>
+				</tr>
+
+				<!-- City -->
+				<tr>
+					<td>
+						<label for="city">City:</label>
+					</td>
+					<td>
+						<s:input path="city" type="text" name="city" id="city" class="form-control" />
+						<span id="cityError"></span>
+					</td>
+				</tr>
+
+				<!-- State -->
+				<tr>
+					<td>
+						<label for="state">State:</label>
+					</td>
+					<td>
+						<!--- India states -->
+						<s:select path="state" id="state" name="state" class="form-control">
+							<s:option value=""></s:option>
+							<s:option value="Andaman and Nicobar Islands">Andaman and
+								Nicobar Islands</s:option>
+							<s:option value="Andhra Pradesh">Andhra Pradesh</s:option>
+							<s:option value="Arunachal Pradesh">Arunachal Pradesh</s:option>
+							<s:option value="Assam">Assam</s:option>
+							<s:option value="Bihar">Bihar</s:option>
+							<s:option value="Chandigarh">Chandigarh</s:option>
+							<s:option value="Chhattisgarh">Chhattisgarh</s:option>
+							<s:option value="Dadra Nagar Haveli">Dadra Nagar Haveli</s:option>
+							<s:option value="Daman and Diu">Daman and Diu</s:option>
+							<s:option value="Delhi">Delhi</s:option>
+							<s:option value="Goa">Goa</s:option>
+							<s:option value="Gujarat">Gujarat</s:option>
+							<s:option value="Haryana">Haryana</s:option>
+							<s:option value="Himachal Pradesh">Himachal Pradesh</s:option>
+							<s:option value="Jammu and Kashmir">Jammu and Kashmir</s:option>
+							<s:option value="Jharkhand">Jharkhand</s:option>
+							<s:option value="Karnataka">Karnataka</s:option>
+							<s:option value="Kerala">Kerala</s:option>
+							<s:option value="Ladakh">Ladakh</s:option>
+							<s:option value="Lakshadweep">Lakshadweep</s:option>
+							<s:option value="Madhya Pradesh">Madhya Pradesh</s:option>
+							<s:option value="Maharashtra">Maharashtra</s:option>
+							<s:option value="Manipur">Manipur</s:option>
+							<s:option value="Meghalaya">Meghalaya</s:option>
+							<s:option value="Mizoram">Mizoram</s:option>
+							<s:option value="Nagaland">Nagaland</s:option>
+							<s:option value="Odisha">Odisha</s:option>
+							<s:option value="Puducherry">Puducherry</s:option>
+							<s:option value="Punjab">Punjab</s:option>
+							<s:option value="Rajasthan">Rajasthan</s:option>
+							<s:option value="Sikkim">Sikkim</s:option>
+							<s:option value="Tamil Nadu">Tamil Nadu</s:option>
+							<s:option value="Telangana">Telangana</s:option>
+							<s:option value="Tripura">Tripura</s:option>
+							<s:option value="Uttar Pradesh">Uttar Pradesh</s:option>
+							<s:option value="Uttarakhand">Uttarakhand</s:option>
+							<s:option value="West Bengal">West Bengal</s:option>
+						</s:select>
+						<span id="stateError"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td>
+						<input type="submit" id="smtb" value="Save" class="btn btn-primary mt-2 px-5">
+					</td>
+				</tr>
+				</table>
 		</s:form>
-</div><!-- container end -->
-	<footer class="card-footer text-center bg-light text-muted fixed-bottom py-1">
-		@Copyright Employee Management System 
+	</div><!-- container end -->
+	<footer class="card-footer text-center bg-light text-muted fixed-bottom py-0">
+		@Copyright Employee Management System
 	</footer>
-		
+
 
 	<script src="<c:url value="/resources/js/validate.js"/>"></script>
 </body>
+
 </html>
