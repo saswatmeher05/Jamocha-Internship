@@ -21,8 +21,7 @@
 
 
 	<select id="getAllJoin" resultMap="result">
-		select
-		s.sid,s.sname,s.sage,s.cid,c.cname,c.cfees from studentmybatis s inner
+		select s.sid,s.sname,s.sage,s.cid,c.cname,c.cfees from studentmybatis s inner
 		join coursemybatis c on s.cid=c.cid
 	</select>
 
@@ -35,13 +34,11 @@
 		</where>
 	</select>
 
-	<select id="selectDynamic" parameterType="java.util.Map"
-		resultMap="result">
+	<select id="selectDynamic" parameterType="java.util.Map" resultMap="result">
 		${key1}
 	</select>
 
-	<select id="selectDynamicColumn" parameterType="java.util.Map"
-		resultMap="result">
+	<select id="selectDynamicColumn" parameterType="java.util.Map" resultMap="result">
 		select ${cols} from studentmybatis;
 	</select>
 

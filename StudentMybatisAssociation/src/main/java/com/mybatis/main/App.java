@@ -114,6 +114,7 @@ public class App {
 				break;
 			}
 		} while (flag);
+		
 		sc.close();
 
 		

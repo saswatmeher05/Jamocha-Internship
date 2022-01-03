@@ -123,7 +123,8 @@ public class StudentMyBatisServiceImpl implements StudentMybatisService {
 	 */
 	@Override
 	public List<StudentMybatis> selectDynamicColumns() {
-		@SuppressWarnings("resource")
+		dynamicSelectColumn.delete(0, dynamicSelectColumn.length());
+		
 		Scanner sc = new Scanner(System.in);
 		
 		boolean flag = false;
@@ -131,7 +132,8 @@ public class StudentMyBatisServiceImpl implements StudentMybatisService {
 			System.out.println("Enter Column Name(sid,sname,sage,cid):");
 			String s = sc.nextLine().toLowerCase();
 			
-			dynamicSelectColumn.append(s).append(",");
+			dynamicSelectColumn.append(s);
+			dynamicSelectColumn.append(",");
 			
 			System.out.println("select more(y/n):");
 			s = sc.nextLine();
@@ -141,13 +143,15 @@ public class StudentMyBatisServiceImpl implements StudentMybatisService {
 			else
 				flag = false;
 		} while (flag);
-
+		
+		sc.close();
+		
 		dynamicSelectColumn.deleteCharAt(dynamicSelectColumn.length() - 1);
 
 		dyanmicQuery.put("cols", dynamicSelectColumn.toString());
-
+		
 		List<StudentMybatis> list = dao.selectDynamicColumns(dyanmicQuery);
-
+		
 		return list;
 	}
 }

@@ -124,8 +124,7 @@ public class StudentMybatisDao {
 		SqlSession session = factory.openSession();
 		
 		try {
-			StudentMybatis sbt = session.selectOne("StudentMybatis.selectDynamic",
-					(HashMap<String, String>) dynamicQuery);
+			StudentMybatis sbt = session.selectOne("StudentMybatis.selectDynamic",(HashMap<String, String>) dynamicQuery);
 			return sbt;
 		} finally {
 			session.close();
