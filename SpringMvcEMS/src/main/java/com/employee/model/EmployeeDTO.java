@@ -11,8 +11,6 @@ public class EmployeeDTO{
 	private String doj;
 	private String city;
 	private String state;
-	
-//	public EmployeeDTO() {}
 
 	public Integer getId() {
 		return id;
@@ -75,8 +73,6 @@ public class EmployeeDTO{
 	}
 
 	public void setDoj(String doj) {
-//		String[] split=doj.split("-");
-//		this.doj=split[split.length-1]+"-"+split[split.length-2]+"-"+split[split.length-3];
 		this.doj = doj;
 	}
 	

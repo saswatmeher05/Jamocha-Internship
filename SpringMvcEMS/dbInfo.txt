@@ -1,0 +1,115 @@
+CREATE TABLE `employee` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `fname` varchar(30) NOT NULL,
+  `lname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `age` int NOT NULL,
+  `gender` varchar(15) NOT NULL,
+  `desg` varchar(30) NOT NULL,
+  `skills` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `doj` date NOT NULL,
+  `city` varchar(25) DEFAULT NULL,
+  `state` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+
+
+
+
+
+Project Explanation:-
+-------------------
+Technologies Used:- 
+SpringMVC,HTML,jsp,jstl 1.2,css-bootstrap,jQuery,mysql 8.0.25, mybatis 3.5.7
+Add these above dependencies in pom.xml
+
+Overview:-
+2 pages - 	EmployeeStatusScreen
+		EmployeeFormScreen
+
+On refreshing EmployeeStatusScreen List<Employee> should be displayed in tabular format.
+used c:forEach tag of jstl
+
+if there is no record then show no records found
+this can be done using <c:chose>
+			<c:when test="${empty employeeList}">
+				<p>no records found</p>
+			</c:when.
+			<c:otherwise>
+				<table>.....list of employees....</table>
+			</c:otherwise>
+
+After clicking on Add Button EmployeeFormScreen is shown:
+	Form Validation is done using JQuery
+
+After Adding Employee A confirmation message is shown in EmployeeStatusScreen.
+Similarly confirmation messages are shown for update and delete operations.
+
+
+Project Creation:-
+1. Maven Project-> maven-archetype-webapp
+2. Add Dependencies-> mysql-connector-java,mybatis,mybatis-spring,jstl,spring-webmvc
+3. web.xml configuration
+	configure DispatcherServlet:
+		  servlet-name->servlet
+		  servlet-class->org.springframework.web.servlet.DispatcherServlet
+		  load on startup->1
+4. spring-servlet.xml configuration	
+	Location-----> SpringMvcEMS/src/main/webapp/WEB-INF/spring-servlet.xml
+	<context:component-scan base-packages="com.employee" />
+	<bean> id=jspViewResolver value="org.springframework.web.view.InternalResourceViewResolver
+		<property name="prefix" value="/WEB-INF/jsp">
+		<property name="suffix" value=".jsp">
+	</bean>
+5.mybatis-config.xml
+	<typeAliases><typeAlias type="com.employee.dao.EmployeeDAO" alias="Employee"/></typeAliases>
+	<environments default="development">
+		<environment id="development">
+		<transactionalManager type="JDBC"/>
+		<dataSource type="pooled">
+			<property name="driver" value="com.mysql.cj.jdbc.Driver">
+			<property name="url" value="jdbc:mysql://localhost:3306/jamocha_internship">
+			<property name="username" value="root">
+			<property name="password" value="root">
+		</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com.employee/dao/EmployeeMapper.xml"/>
+	</mappers>
+6.EmployeeMapper.xml
+	<mapper namespace="com.employee.model.EmployeeDTO">
+		<resultMap id="result">
+			id
+			name
+			...
+		</resultMap>
+		<select resultMap="result">
+			select * from employee;
+		</select>
+		<insert>
+			insert into .....;
+		</insert>
+		...
+		..
+	</mapper>
+7.Add the following resources (C=class,I=Interface)
+	com.employee.model.EmployeeDTO(C)
+	com.employee.dao.EmployeeMapper(C)
+	com.employee.dao.EmployeeMapper(XML)
+	com.employee.service.EmployeeService(I)
+	com.employee.service.EmployeeServiceImpl(C)
+	com.employee.controller.EmployeeController(C)
+	com.employee.util.MybatisConnectionFactory(C)
+
+	/SpringMvcEMS/src/main/java/resources/mybatis-config.xml
+	...
+	..
+
+	
+
+*A FlashMap provides a way for one request to store attributes intended for use in another. This is most commonly 
+ needed when redirecting from one URL to another -- e.g. the Post/Redirect/Get pattern. A FlashMap is saved before 
+ the redirect (typically in the session) and is made available after the redirect and removed immediately.
+	

@@ -10,8 +10,8 @@
 </head>
 <body>
 <div class="container my-5">
-<h1 class="text-danger">505 Internal Server Error</h1><br><br>
-<a href="listOfEmployee" class="btn btn-primary">HomePage</a>
+<h1 class="text-danger">Internal Server Error</h1><br><br>
+<a href="ems/employeeList" class="btn btn-primary">HomePage</a>
 </div>
 </body>
 </html>

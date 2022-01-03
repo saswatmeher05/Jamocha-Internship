@@ -1,1 +1,1 @@
-<% response.sendRedirect("ems/listOfEmployee"); %>
+<% response.sendRedirect("ems/employeeList"); %>

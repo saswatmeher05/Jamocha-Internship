@@ -10,20 +10,24 @@ $(document).ready(function() {
 		var doj = $("#doj").val();
 		var city = $("#city").val();
 		var state = $("#state").val();
-		var errors = "";
+
 		//useful regex
-		var fnameRegex = /^[A-Za-z]{3,30}$/;
-		var lnameRegex = /^[A-Za-z]{3,30}$/;
-		var ageRegex = /^[0-9]{2,2}$/;
+		var fnameRegex = /^[A-Za-z0-9\s\_\.]{2,30}$/;
+		var lnameRegex = /^[A-Za-z0-9\s\_\.]{2,30}$/;
+		var ageRegex = /^[0-9]{1,2}$/;
 
 		//form validation 
 		if (fname == "") {
 			$("#fname").addClass("border-danger");
-			errors += "Please Enter First Name\n";
+			alert("Enter First Name");
+			$("#fname").focus();
+			return false;
 		}
 		else if (!fnameRegex.test(fname)) {
 			$("#fname").addClass("border-danger");
-			errors += "Invalid First Name\n";
+			alert("Invalid First Name");
+			$("#fname").focus();
+			return false;
 		} else {
 			$("#fname").removeClass("border-danger");
 		}
@@ -31,11 +35,15 @@ $(document).ready(function() {
 
 		if (lname == "") {
 			$("#lname").addClass("border-danger");
-			errors += "Enter Last Name\n";
+			alert("Enter Last Name");
+			$("#lname").focus();
+			return false;
 		}
 		else if (!lnameRegex.test(lname)) {
 			$("#lname").addClass("border-danger");
-			errors += "Invalid Last Name\n";
+			alert("Invalid Last Name");
+			$("#lname").focus();
+			return false;
 		} else {
 			$("#lname").removeClass("border-danger");
 		}
@@ -43,24 +51,27 @@ $(document).ready(function() {
 
 		if (age == "") {
 			$("#age").addClass("border-danger");
-			errors += "Enter Age\n";
+			alert("Enter Age");
+			$("#age").focus();
+			return false;
 		} else if (!ageRegex.test(age)) {
 			$("#age").addClass("border-danger");
-			errors += "Only Numericals Allowed\n";
+			alert("Invalid Age Characters Not Allowed");
+			$("#age").focus();
+			return false;
 		} else if (age < 15 || age > 80) {
 			$("#age").addClass("border-danger");
-			errors += "Age Range: 15-80\n";
+			alert("Age Allowed : 15-80");
+			$("#age").focus();
+			return false;
 		} else {
 			$("#age").removeClass("border-danger");
 		}
 
 
 		if (gender == 0) {
-			errors += "Select Gender\n";
-			$("#genderError").show();
-			$("#genderError").html("<br>Select Gender");
-			$("#genderError").css("color", "red");
-			// alert("Select Gender");
+			alert("Chose Gender");
+			return false;
 		} else {
 			$("#genderError").hide();
 		}
@@ -68,18 +79,17 @@ $(document).ready(function() {
 
 		if (desg == "") {
 			$("#desg").addClass("border-danger");
-			errors += "Enter Designation\n";
+			alert("Enter Designation");
+			$("#desg").focus();
+			return false;
 		} else {
 			$("#desg").removeClass("border-danger");
 		}
 
 
 		if (skills == 0) {
-			errors += "Chose At Least One Skill\n";
-			$("#skillsError").show();
-			$("#skillsError").html("<br>Select One Skill");
-			$("#skillsError").css("color", "red");
-			// alert("Chose At Least One Skill");
+			alert("Chose At least One Skill");
+			return false;
 		} else {
 			$("#skillsError").hide();
 		}
@@ -87,7 +97,9 @@ $(document).ready(function() {
 
 		if (!doj) {
 			$("#doj").addClass("border-danger");
-			errors += "Chose Date Of Joining\n";
+			alert("Select Date Of Joining");
+			$("#doj").focus();
+			return false;
 		} else {
 			$("#doj").removeClass("border-danger");
 		}
@@ -95,7 +107,9 @@ $(document).ready(function() {
 
 		if (city == "") {
 			$("#city").addClass("border-danger");
-			errors += "Enter Your City Name\n";
+			alert("Enter City");
+			$("#city").focus();
+			return false;
 		} else {
 			$("#city").removeClass("border-danger");
 		}
@@ -103,35 +117,26 @@ $(document).ready(function() {
 
 		if (state == "") {
 			$("#state").addClass("border-danger");
-			errors += "Chose State\n";
+			alert("Chose State");
+			$("#state").focus();
+			return false;
 		} else {
 			$("#state").removeClass("border-danger");
 		}
 
-		//on submit
-		if (errors.length) {
-			// alert(errors);
-			alert("Incomplete Inputs Try Again!");
-			return false;
-		} else {
-
-		}
-
 	});
 
-	//form events 
-	var flag = true;
+
+	//form events
 	//first name
 	$("#fname").change(function() {
 		var fname = $("#fname").val();
-		var fnameRegex = /^[A-Za-z]{3,30}$/;
+		var fnameRegex = /^[A-Za-z]{2,30}$/;
 		if (fname == "") {
 			$("#fname").addClass("border-danger");
-			alert("Enter First Name");
 		}
 		else if (!fnameRegex.test(fname)) {
 			$("#fname").addClass("border-danger");
-			alert("Invalid First Name");
 		}
 		else {
 			$("#fname").removeClass("border-danger");
@@ -142,14 +147,13 @@ $(document).ready(function() {
 	//last name
 	$("#lname").change(function() {
 		var lname = $("#lname").val();
-		var lnameRegex = /^[A-Za-z]{3,30}$/;
+		var lnameRegex = /^[A-Za-z]{1,30}$/;
 		if (lname == "") {
 			$("#lname").addClass("border-danger");
-			alert("Enter Last Name");
+
 		}
 		else if (!lnameRegex.test(lname)) {
 			$("#lname").addClass("border-danger");
-			alert("Invalid Last Name");
 		}
 		else {
 			$("#lname").removeClass("border-danger");
@@ -162,14 +166,11 @@ $(document).ready(function() {
 		var ageRegex = /^[0-9]{1,2}$/;
 		if (age == "") {
 			$("#age").addClass("border-danger");
-			alert("Enter Age");
 		}
 		else if (!ageRegex.test(age)) {
 			$("#age").addClass("border-danger");
-			alert("Only Numbers Allowed");
 		} else if (age < 15 || age > 80) {
 			$("#age").addClass("border-danger");
-			alert("Allowed Age Range : 15-80");
 		}
 		else {
 			$("#age").removeClass("border-danger");
@@ -189,7 +190,6 @@ $(document).ready(function() {
 		var desg = $("#desg").val();
 		if (desg == "") {
 			$("#desg").addClass("border-danger");
-			alert("Enter Designation");
 		} else {
 			$("#desg").removeClass("border-danger");
 		}
@@ -218,7 +218,6 @@ $(document).ready(function() {
 		var city = $("#city").val();
 		if (city == "") {
 			$("#city").addClass("border-danger");
-			alert("Enter City");
 		} else {
 			$("#city").removeClass("border-danger");
 		}
@@ -229,11 +228,12 @@ $(document).ready(function() {
 		var state = $("#state").val();
 		if (state == "") {
 			$("#state").addClass("border-danger");
-			alert("Chose State");
 		} else {
 			$("#state").removeClass("border-danger");
 		}
 	});
+
+
 
 	//dynamic checkboxes for update
 	var skills = $("#skills").val().split(",");
@@ -246,4 +246,5 @@ $(document).ready(function() {
 			element.removeAttribute("checked");
 		}
 	});
+	
 });
