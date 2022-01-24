@@ -34,15 +34,22 @@ nav {
 	</nav>
 	<div class="container-fluid mt-1 mb-5">
 
-		<div class="d-flex justify-content-between">
+		<div class="d-flex justify-content-end">
 			<div class="p-2 mt-1"></div>
-			<div class="p-2 align-self-end mt-1 mb-2">
+			<div class="p-2 align-self-end mt-1 mb-2 m-auto">
 				<c:if test="${not empty saveMsg}">
 					<div class="text-success text-center">
 						<span id="saveMsg" class="h6">Employee Added Successfully</span>
 					</div>
 				</c:if>
-				<%-- <c:remove var="saveMsg" scope="session" /> --%>
+				<c:remove var="saveMsg" scope="session" />
+				
+				<c:if test="${not empty expMsg}">
+					<div class="text-success text-center">
+						<span id="expMsg" class="h6"><% out.print(session.getAttribute("expMsg")); %></span>
+					</div>
+				</c:if>
+				<c:remove var="expMsg" scope="session" />
 
 				<c:if test="${not empty updtMsg}">
 					<div class="text-success text-center">
@@ -60,8 +67,12 @@ nav {
 
 			</div>
 			<div class="mt-4 mb-2">
-				<a href="showFormForAdd"
-					class="btn btn-primary btn-responsive float-right px-4 font-weight-bold">ADD</a>
+				<a href="excelexport" class="btn btn-warning text-white btn-responsive float-right px-4 mx-2 font-weight-bold">EXPORT
+				<i class="fa fa-file-excel-o"></i>
+				</a>
+			</div>
+			<div class="mt-4 mb-2">
+				<a href="showFormForAdd" class="btn btn-primary btn-responsive float-right px-4 font-weight-bold">ADD</a>
 			</div>
 		</div>
 
@@ -85,7 +96,6 @@ nav {
 							<th>DOJ</th>
 							<th>City</th>
 							<th>State</th>
-
 						</tr>
 					</thead>
 					<c:forEach items="${employeeList}" var="e">

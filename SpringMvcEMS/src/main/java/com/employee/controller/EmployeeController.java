@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.employee.model.EmployeeDTO;
 import com.employee.service.EmployeeService;
+import com.employee.util.EmployeeDataExcelExport;
 
 @Controller
 @RequestMapping("/ems")
@@ -44,13 +45,11 @@ public class EmployeeController {
 			RedirectAttributes ra) {
 		if (employee.getId() == null) {
 			String s = employeeService.saveEmployee(employee);
-//			model.addAttribute("saveMsg",s);
 //			session.setAttribute("saveMsg", s);
 			ra.addFlashAttribute("saveMsg", s);
 			return "redirect:/ems/employeeList";
 		} else {
 			String s = employeeService.updateEmployee(employee);
-//			model.addAttribute("updtMsg",s);
 			session.setAttribute("updtMsg", s);
 			return "redirect:/ems/employeeList";
 		}
@@ -66,9 +65,19 @@ public class EmployeeController {
 	@GetMapping("/displayDeleteForm")
 	public String deleteEmployee(@RequestParam("id") int id, Model model, HttpSession session) {
 		String s = employeeService.deleteEmployee(id);
-//		model.addAttribute("delMsg", s);
 		session.setAttribute("delMsg", s);
 		return "redirect:/ems/employeeList";
+	}
+	
+	@GetMapping("/excelexport")
+	public ModelAndView exportToExcel(Model model,HttpSession session) throws IOException, ParseException {
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new EmployeeDataExcelExport());
+		//read data from db
+		List<EmployeeDTO> list=employeeService.getAllEmployees(model);
+		//session.setAttribute("expMsg", "Exported To Excel");
+		mav.addObject("list", list);
+		return mav;
 	}
 
 	// Error Pages
