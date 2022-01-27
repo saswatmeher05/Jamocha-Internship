@@ -1,2 +1,2 @@
 # Jamocha-Internship
-Tasks and Stuff
+Internship Tasks and Stuff
