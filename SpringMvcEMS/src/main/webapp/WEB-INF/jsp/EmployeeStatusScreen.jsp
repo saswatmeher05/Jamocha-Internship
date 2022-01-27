@@ -35,31 +35,31 @@ nav {
 	<div class="container-fluid mt-1 mb-5">
 
 		<div class="d-flex justify-content-end">
-			<div class="p-2 mt-1"></div>
+			<!-- <div class="p-2 mt-1"></div> -->
 			<div class="p-2 align-self-end mt-1 mb-2 m-auto">
 				<c:if test="${not empty saveMsg}">
-					<div class="text-success text-center">
+					<div class="text-success">
 						<span id="saveMsg" class="h6">Employee Added Successfully</span>
 					</div>
 				</c:if>
 				<c:remove var="saveMsg" scope="session" />
 				
 				<c:if test="${not empty expMsg}">
-					<div class="text-success text-center">
+					<div class="text-success">
 						<span id="expMsg" class="h6"><% out.print(session.getAttribute("expMsg")); %></span>
 					</div>
 				</c:if>
 				<c:remove var="expMsg" scope="session" />
 
 				<c:if test="${not empty updtMsg}">
-					<div class="text-success text-center">
+					<div class="text-success">
 						<span id="updtmsg" class="h6">Employee Updated Successfully</span>
 					</div>
 				</c:if>
 				<c:remove var="updtMsg" scope="session" />
 
 				<c:if test="${not empty delMsg}">
-					<div class="text-success text-center">
+					<div class="text-success">
 						<span id="delmsg" class="h6">Employee Deleted Successfully</span>
 					</div>
 				</c:if>
@@ -67,7 +67,12 @@ nav {
 
 			</div>
 			<div class="mt-4 mb-2">
-				<a href="excelexport" class="btn btn-warning text-white btn-responsive float-right px-4 mx-2 font-weight-bold">EXPORT
+				<a href="pdfexport" class="btn btn-success text-white btn-responsive float-right px-4 mr-2 font-weight-bold">EXPORT
+				<i class="fa fa-file-pdf-o"></i>
+				</a>
+			</div>
+			<div class="mt-4 mb-2">
+				<a href="excelexport" class="btn btn-warning text-white btn-responsive float-right px-4 mr-2 font-weight-bold">EXPORT
 				<i class="fa fa-file-excel-o"></i>
 				</a>
 			</div>
@@ -83,7 +88,7 @@ nav {
 				</div>
 			</c:when>
 			<c:otherwise>
-				<table class="table table-responsive-xl table-hover table-striped" id="table">
+				<table class="table table-responsive-xl table-hover table-striped mb-2" id="table">
 					<thead class="bg-primary text-white">
 						<tr>
 							<th>Action</th>
@@ -130,6 +135,13 @@ nav {
 				</table>
 			</c:otherwise>
 		</c:choose>
+		<%-- <form action="${pageContext.request.contextPath}/ems/excelimport" enctype="multipart/form-data" method="post">
+			<div class="d-flex justify-content-end mt-0 pt-0">
+				<button class="btn btn-primary py-2">IMPORT
+					<i class="fa fa-file-excel-o"></i>
+				</button>
+			</div>
+		</form> --%>
 	</div><!-- container end -->
 	
 	<footer class="card-footer text-center bg-light text-muted fixed-bottom py-0">

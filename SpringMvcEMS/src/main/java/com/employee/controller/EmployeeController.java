@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.employee.model.EmployeeDTO;
 import com.employee.service.EmployeeService;
 import com.employee.util.EmployeeDataExcelExport;
+import com.employee.util.EmployeeDataPdfExport;
 
 @Controller
 @RequestMapping("/ems")
@@ -77,6 +78,16 @@ public class EmployeeController {
 		List<EmployeeDTO> list=employeeService.getAllEmployees(model);
 		//session.setAttribute("expMsg", "Exported To Excel");
 		mav.addObject("list", list);
+		return mav;
+	}
+	
+	@GetMapping("/pdfexport")
+	public ModelAndView exportToPdf(Model model) throws IOException, ParseException {
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new EmployeeDataPdfExport());
+		//read data from db
+		List<EmployeeDTO> list=employeeService.getAllEmployees(model);
+		mav.addObject("list",list);
 		return mav;
 	}
 

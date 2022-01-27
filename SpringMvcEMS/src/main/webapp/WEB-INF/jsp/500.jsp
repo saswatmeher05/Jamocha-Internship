@@ -11,7 +11,7 @@
 <body>
 <div class="container my-5">
 <h1 class="text-danger">Internal Server Error</h1><br><br>
-<a href="ems/employeeList" class="btn btn-primary">HomePage</a>
+<a href="employeeList" class="btn btn-primary">HomePage</a>
 </div>
 </body>
 </html>
