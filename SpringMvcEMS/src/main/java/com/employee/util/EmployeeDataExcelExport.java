@@ -73,16 +73,6 @@ public class EmployeeDataExcelExport extends AbstractXlsxView {
 		Cell cell8=row0.createCell(8);
 		cell8.setCellStyle(style);
 		cell8.setCellValue("State");
-		
-		
-//		row0.createCell(1).setCellValue("Last Name");
-//		row0.createCell(2).setCellValue("Age");
-//		row0.createCell(3).setCellValue("Gender");
-//		row0.createCell(4).setCellValue("Designation");
-//		row0.createCell(5).setCellValue("Skills");
-//		row0.createCell(6).setCellValue("DOJ");
-//		row0.createCell(7).setCellValue("City");
-//		row0.createCell(8).setCellValue("State");
 
 		// create row1 onwards
 		int rowNum = 1;
