@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.ss.usermodel.CellStyle;
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
 import com.employee.model.EmployeeDTO;
@@ -28,7 +27,7 @@ public class EmployeeDataPdfExport extends AbstractPdfView {
 		table.setTableFitsPage(true);
 		table.setPadding(1);
 		table.setSpacing(1);
-		
+
 		table.addCell("First Name");
 		table.addCell("Last Name");
 		table.addCell("Age");
